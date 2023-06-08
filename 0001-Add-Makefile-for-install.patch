@@ -1,0 +1,27 @@
+From 2d3ed8d7eb7c2d2205a68b380fcbb777dcde4171 Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Thu, 8 Jun 2023 10:47:33 -0700
+Subject: [PATCH] Add Makefile for install
+
+Signed-off-by: William Douglas <william.douglas@intel.com>
+---
+ Makefile | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..f3ccc1f
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,7 @@
++all:
++
++install:
++	mkdir -p $(DESTDIR)/usr/share/fonts/X11/OTF
++	mkdir -p $(DESTDIR)/usr/share/fonts/X11/TTF
++	cp fonts/otf/*.otf $(DESTDIR)/usr/share/fonts/X11/OTF/
++	cp fonts/ttf/*.ttf $(DESTDIR)/usr/share/fonts/X11/TTF/
+-- 
+2.40.1
+
