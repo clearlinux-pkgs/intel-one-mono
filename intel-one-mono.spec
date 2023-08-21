@@ -4,15 +4,14 @@
 # Using build pattern: make
 #
 Name     : intel-one-mono
-Version  : 1.2.1
-Release  : 1
-URL      : https://github.com/intel/intel-one-mono/archive/refs/tags/V1.2.1.tar.gz
-Source0  : https://github.com/intel/intel-one-mono/archive/refs/tags/V1.2.1.tar.gz
+Version  : 1.3.0
+Release  : 2
+URL      : https://github.com/intel/intel-one-mono/archive/V1.3.0/intel-one-mono-1.3.0.tar.gz
+Source0  : https://github.com/intel/intel-one-mono/archive/V1.3.0/intel-one-mono-1.3.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : OFL-1.1
 Requires: intel-one-mono-data = %{version}-%{release}
-Requires: intel-one-mono-license = %{version}-%{release}
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -30,17 +29,9 @@ Group: Data
 data components for the intel-one-mono package.
 
 
-%package license
-Summary: license components for the intel-one-mono package.
-Group: Default
-
-%description license
-license components for the intel-one-mono package.
-
-
 %prep
-%setup -q -n intel-one-mono-1.2.1
-cd %{_builddir}/intel-one-mono-1.2.1
+%setup -q -n intel-one-mono-1.3.0
+cd %{_builddir}/intel-one-mono-1.3.0
 %patch -P 1 -p1
 
 %build
@@ -48,7 +39,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686246736
+export SOURCE_DATE_EPOCH=1692660468
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -61,14 +52,8 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1686246736
+export SOURCE_DATE_EPOCH=1692660468
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/intel-one-mono
-cp %{_builddir}/intel-one-mono-%{version}/fonts/otf/license %{buildroot}/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd || :
-cp %{_builddir}/intel-one-mono-%{version}/fonts/ttf/license %{buildroot}/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd || :
-cp %{_builddir}/intel-one-mono-%{version}/fonts/woff/license %{buildroot}/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd || :
-cp %{_builddir}/intel-one-mono-%{version}/fonts/woff2/license %{buildroot}/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd || :
-cp %{_builddir}/intel-one-mono-%{version}/license %{buildroot}/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd || :
 %make_install
 
 %files
@@ -76,23 +61,19 @@ cp %{_builddir}/intel-one-mono-%{version}/license %{buildroot}/usr/share/package
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-bold.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-bolditalic.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-italic.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-light.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-lightitalic.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-medium.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-mediumitalic.otf
-/usr/share/fonts/X11/OTF/intelone-mono-font-family-regular.otf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-bold.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-bolditalic.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-italic.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-light.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-lightitalic.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-medium.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-mediumitalic.ttf
-/usr/share/fonts/X11/TTF/intelone-mono-font-family-regular.ttf
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/intel-one-mono/d1f3472dd07ac1b922dcea3e5af9491bc8a4b7fd
+/usr/share/fonts/X11/OTF/IntelOneMono-Bold.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-BoldItalic.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-Italic.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-Light.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-LightItalic.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-Medium.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-MediumItalic.otf
+/usr/share/fonts/X11/OTF/IntelOneMono-Regular.otf
+/usr/share/fonts/X11/TTF/IntelOneMono-Bold.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-BoldItalic.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-Italic.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-Light.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-LightItalic.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-Medium.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-MediumItalic.ttf
+/usr/share/fonts/X11/TTF/IntelOneMono-Regular.ttf
